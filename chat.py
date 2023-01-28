@@ -95,7 +95,6 @@ def summarize_memories(memories):
         timestamps.append(mem['time'])
     block = block.strip()
     prompt = open_file('prompt_notes.txt').replace('<<INPUT>>', block)
-    # TODO - do this in the background over time to handle huge amounts of memories
     notes = gpt3_completion(prompt)
     ####   SAVE NOTES
     vector = gpt3_embedding(block)
