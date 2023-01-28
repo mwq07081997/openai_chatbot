@@ -8,6 +8,7 @@ from time import time,sleep
 from uuid import uuid4
 import datetime
 
+from urllib.request import urlopen # import urllib library
 
 def open_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as infile:
@@ -18,33 +19,40 @@ def save_file(filepath, content):
     with open(filepath, 'w', encoding='utf-8') as outfile:
         outfile.write(content)
 
-
+# reads JSON format
 def load_json(filepath):
     with open(filepath, 'r', encoding='utf-8') as infile:
         return json.load(infile)
 
-
+# writes in jSON format
 def save_json(filepath, payload):
     with open(filepath, 'w', encoding='utf-8') as outfile:
         json.dump(payload, outfile, ensure_ascii=False, sort_keys=True, indent=2)
+
+# reads from url, to be rewrite to read web3.storage URLs for JSON data
+def read_http_json():
+    url = "https://bafybeifibm3q5pcynmqnlagsel3pwxduuof73vew3dvezuzp4tyz7qbgdi.ipfs.w3s.link/log_1674722626.6520002_RAVEN%20-%20Copy.json"
+    # Send a GET request to the URL
+    response = urlopen(url)
+    return json.loads(response.read())
 
 
 def timestamp_to_datetime(unix_time):
     return datetime.datetime.fromtimestamp(unix_time).strftime("%A, %B %d, %Y at %I:%M%p %Z")
 
-
+# OpenAI function: Takes user or bot input as 'content' parameter. Generates numbers called 'vector'.
 def gpt3_embedding(content, engine='text-embedding-ada-002'):
     content = content.encode(encoding='ASCII',errors='ignore').decode()
     response = openai.Embedding.create(input=content,engine=engine)
     vector = response['data'][0]['embedding']  # this is a normal list
     return vector
 
-
+# calculates the dot-product of two vector numbers. Function is used in fetch_memories()
 def similarity(v1, v2):
     # based upon https://stackoverflow.com/questions/18424228/cosine-similarity-between-2-number-lists
     return np.dot(v1, v2)/(norm(v1)*norm(v2))  # return cosine similarity
 
-
+# returns related JSON files from 'chat_logs' folder
 def fetch_memories(vector, logs, count):
     scores = list()
     for i in logs:
@@ -55,26 +63,28 @@ def fetch_memories(vector, logs, count):
         i['score'] = score
         scores.append(i)
     ordered = sorted(scores, key=lambda d: d['score'], reverse=True)
-    # TODO - pick more memories temporally nearby the top most relevant memories
+
     try:
         ordered = ordered[0:count]
         return ordered
     except:
         return ordered
 
-
+# reads all JSON files from 'chat_logs' folder. 
 def load_convo():
     files = os.listdir('chat_logs')
     files = [i for i in files if '.json' in i]  # filter out any non-JSON files
     result = list()
     for file in files:
+        # TODO - implement HTTP API to load JSON files from web3.storage
+        # Do not require local folder to save or load JSON files
         data = load_json('chat_logs/%s' % file)
         result.append(data)
     ordered = sorted(result, key=lambda d: d['time'], reverse=False)  # sort them all chronologically
     return result
 
-
-def summarize_memories(memories):  # summarize a block of memories into one payload
+# summarize a block of memories into one payload
+def summarize_memories(memories):  
     memories = sorted(memories, key=lambda d: d['time'], reverse=False)  # sort them chronologically
     block = ''
     identifiers = list()
