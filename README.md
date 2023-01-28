@@ -1,6 +1,6 @@
-# LongtermChatExternalSources
+# OpenAI Chatbot with memory storage
 
-GPT-3 chatbot with long-term memory and external sources.
+OpenAI chatbot with memory storage and external sources.
 
 ## Prerequisites
 
