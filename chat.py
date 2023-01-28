@@ -89,6 +89,7 @@ def summarize_memories(memories):
     block = ''
     identifiers = list()
     timestamps = list()
+    # TODO - get the same uuids of the filtered chatlogs to find related notes.json files
     for mem in memories:
         block += mem['message'] + '\n\n'
         identifiers.append(mem['uuid'])
@@ -155,7 +156,10 @@ if __name__ == '__main__':
         timestamp = time()
         vector = gpt3_embedding(a)
         timestring = timestamp_to_datetime(timestamp)
+        # TODO - use user's username as USER
         message = '%s: %s - %s' % ('USER', timestring, a)
+        #### save USER chatlog as log_3231...232_user.json file
+        # TODO - add another field, "receiver":"RAVEN"
         info = {'speaker': 'USER', 'time': timestamp, 'vector': vector, 'message': message, 'uuid': str(uuid4()), 'timestring': timestring}
         filename = 'log_%s_USER.json' % timestamp
         save_json('chat_logs/%s' % filename, info)
@@ -172,6 +176,8 @@ if __name__ == '__main__':
         vector = gpt3_embedding(output)
         timestring = timestamp_to_datetime(timestamp)
         message = '%s: %s - %s' % ('RAVEN', timestring, output)
+        #### save RAVEN chatlog as log_3212...232_raven.json file
+        # TODO - save JSON files into web3.storage
         info = {'speaker': 'RAVEN', 'time': timestamp, 'vector': vector, 'message': message, 'uuid': str(uuid4()), 'timestring': timestring}
         filename = 'log_%s_RAVEN.json' % time()
         save_json('chat_logs/%s' % filename, info)
