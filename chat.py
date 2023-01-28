@@ -163,10 +163,8 @@ if __name__ == '__main__':
         #### load conversation
         conversation = load_convo()
         #### compose corpus (fetch memories, etc)
-        memories = fetch_memories(vector, conversation, 10)  # pull episodic memories
-        # TODO - fetch declarative memories (facts, wikis, KB, company data, internet, etc)
-        notes = summarize_memories(memories)
-        # TODO - search existing notes first
+        memories = fetch_memories(vector, conversation, 10)  # pull ten recent chatlogs as memories
+        notes = summarize_memories(memories)    # pull summarized notes of the chat as memories too 
         recent = get_last_messages(conversation, 4)
         prompt = open_file('prompt_response.txt').replace('<<NOTES>>', notes).replace('<<CONVERSATION>>', recent)
         #### generate response, vectorize, save, etc
