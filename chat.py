@@ -8,8 +8,6 @@ from time import time,sleep
 from uuid import uuid4
 import datetime
 
-from urllib.request import urlopen # import urllib library
-
 def open_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as infile:
         return infile.read()
@@ -28,13 +26,6 @@ def load_json(filepath):
 def save_json(filepath, payload):
     with open(filepath, 'w', encoding='utf-8') as outfile:
         json.dump(payload, outfile, ensure_ascii=False, sort_keys=True, indent=2)
-
-# reads from url, to be rewrite to read web3.storage URLs for JSON data
-def read_http_json():
-    url = "https://bafybeifibm3q5pcynmqnlagsel3pwxduuof73vew3dvezuzp4tyz7qbgdi.ipfs.w3s.link/log_1674722626.6520002_RAVEN%20-%20Copy.json"
-    # Send a GET request to the URL
-    response = urlopen(url)
-    return json.loads(response.read())
 
 
 def timestamp_to_datetime(unix_time):
