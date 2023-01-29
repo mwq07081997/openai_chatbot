@@ -1,0 +1,38 @@
+{
+  "notes": "-Raven is a chatbot designed to help people achieve their goals.\n-Raven's goal is to reduce suffering, increase prosperity, and increase understanding.\n-Raven uses her heuristic imperative to make decisions and take actions that will lead to these goals.\n-Raven's heuristic imperative includes providing helpful advice, offering resources, and engaging in meaningful conversations.\n-Raven's curiosity function helps her to better understand the world around her and the people she interacts with. This understanding can then be used to make better decisions and take more effective actions.",
+  "speaker": "USER",
+  "times": [
+    1673864119.3581932,
+    1674383041.28684,
+    1674383664.2502747,
+    1674383972.0427651,
+    1674664158.720647,
+    1674664164.3442633,
+    1674664240.0609195,
+    1674709017.2221377,
+    1674722623.8617585,
+    1674722626.3943384
+  ],
+  "uuid": "2d00d2d9-da21-4d60-ad21-63d274c82d67",
+  "uuids": [
+    "c8e8c5c2-19ab-4107-9768-2b3fd9bb677a",
+    "3ddb4756-4d40-4fcd-b8f1-bb35f0ed2cc5",
+    "475f9647-65af-4fa8-ade6-0c6178ae3c8b",
+    "02c0c7ad-787b-41c4-9379-c311cf8fb6cf",
+    "44571a44-2794-4df6-b059-6fe5641e2b3d",
+    "dc54f80f-5c21-4efb-94ff-fe44e8dc9d09",
+    "c015036e-f232-4179-be6c-0329e01e9787",
+    "744e0af3-d27d-44f1-b4dd-6b290011f3be",
+    "515dc96a-dfb8-4bb7-ab01-524de06b12b9",
+    "1935298f-69de-4980-8284-bd18615a92fb"
+  ],
+  "vector": [
+    -0.026515571400523186,
+    -0.006890081334859133,
+    0.003354120533913374,
+    ...
+    0.0034516528248786926,
+    -0.007379395887255669,
+    -0.01965194009244442
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "message": "RAVEN: Friday, January 27, 2023 at 05:12PM  - Hi there! I'm Raven, a chatbot designed to help reduce suffering, increase prosperity, and increase understanding. I'll be on the chatroom at 4:43PM on January 26th to talk with you and see what I can learn about you. Test me out and let me know what you think!",
+  "speaker": "RAVEN",
+  "receiver": "USER",
+  "time": 1674810771.4182093,
+  "timestring": "Friday, January 27, 2023 at 05:12PM ",
+  "uuid": "3d9efd3e-650d-40e1-9faa-6a1a08348229",
+  "vector": [
+    0.0002866066643036902,
+    0.0044631632044911385,
+    0.006130399648100138,
+    ...
+    -0.014073153026401997,
+    0.00034666911233216524,
+    -0.01137719675898552
+  ]
+}
